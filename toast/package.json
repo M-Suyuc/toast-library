@@ -1,0 +1,48 @@
+{
+  "name": "ms-ui-toast",
+  "version": "0.0.3",
+  "description": "test toast ui",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "repository": {
+    "url": "https://github.com/M-suyuc"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
+    },
+    "./dist/index.css": "./dist/index.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup src/index.ts --format esm --watch --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tsc"
+  },
+  "keywords": [
+    "test",
+    "toast",
+    "notification",
+    "toast"
+  ],
+  "author": "m-suyuc",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3"
+  }
+}

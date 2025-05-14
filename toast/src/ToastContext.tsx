@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Toast, { TypeToast } from "./Toast";
+import { AnimatePresence } from "motion/react";
 
 interface Props {
   title: string;
@@ -33,10 +34,32 @@ export const Toaster = () => {
     setToasts((prev) => [...prev, newToast]);
   };
 
+  function removeItem(arr: Array<Props & { id: string }> = toasts, item: any) {
+    return arr.filter((toast) => toast.id !== item.id);
+  }
+
+  let duration = Math.min(
+    ...toasts.map((toast) => toast.options?.duration || 3000)
+  );
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (toasts.length) {
+        setToasts((toasts) => removeItem(toasts, toasts[0]));
+      }
+    }, duration);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [toasts]);
+
+  // console.log("🚀 ~ Toaster ~ toasts:", toasts);
+
   globalToast = showToast;
 
   return (
-    <div>
+    <AnimatePresence>
       {isMounted &&
         toasts.length > 0 &&
         toasts.map((toast) => (
@@ -45,10 +68,10 @@ export const Toaster = () => {
             title={toast.title}
             description={toast.description}
             type={toast.options?.type}
-            duration={toast.options?.duration}
+            onClose={() => setToasts(removeItem(toasts, toast))}
           />
         ))}
-    </div>
+    </AnimatePresence>
   );
 };
 

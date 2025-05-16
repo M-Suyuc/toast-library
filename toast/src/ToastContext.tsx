@@ -39,7 +39,7 @@ export const Toaster = () => {
   }
 
   let duration = Math.min(
-    ...toasts.map((toast) => toast.options?.duration || 3000)
+    ...toasts.map((toast) => toast.options?.duration || 1200)
   );
 
   useEffect(() => {
@@ -54,24 +54,24 @@ export const Toaster = () => {
     };
   }, [toasts]);
 
-  // console.log("🚀 ~ Toaster ~ toasts:", toasts);
-
   globalToast = showToast;
 
   return (
-    <AnimatePresence>
-      {isMounted &&
-        toasts.length > 0 &&
-        toasts.map((toast) => (
-          <Toast
-            key={toast.id}
-            title={toast.title}
-            description={toast.description}
-            type={toast.options?.type}
-            onClose={() => setToasts(removeItem(toasts, toast))}
-          />
-        ))}
-    </AnimatePresence>
+    <div>
+      <AnimatePresence>
+        {isMounted &&
+          toasts.length > 0 &&
+          toasts.map((toast, id) => (
+            <Toast
+              key={toast?.id}
+              title={toast?.title}
+              description={toast?.description}
+              type={toast?.options?.type}
+              id={id}
+            />
+          ))}
+      </AnimatePresence>
+    </div>
   );
 };
 
@@ -80,7 +80,7 @@ export const toast = (data: Props) => {
     globalToast(data);
   } else {
     console.error(
-      "🔔 <Toaster /> component is not mounted. Check toast.pheralb.dev/toaster for more information."
+      "<Toaster /> component is not mounted. You must import <Toaster /> in your  root layout "
     );
   }
 };

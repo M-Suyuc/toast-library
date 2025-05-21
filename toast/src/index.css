@@ -1,5 +1,10 @@
 /* =============================== */
 :root {
+  /* default */
+  --default-bg: #fff;
+  --default-border: #333;
+  --default-icon: gray;
+
   /* Success */
   --success-bg: #4caf50;
   --success-border: #2e7d32;
@@ -22,50 +27,61 @@
 }
 
 /* ===============  ================ */
+/* DEFAULT */
+.toast--default {
+  background: var(--default--bg, #fff);
+  border-left: 4px solid var(--default--border, #999);
+  color: #000;
+}
+
 /* SUCCESS */
 .toast--success {
   background: var(--success-bg, #4caf50);
   border-left: 4px solid var(--success-border, #2e7d32);
+  color: #fff;
 }
 
-.toast--success .toast-icon {
+.toast--success svg {
   color: var(--success-icon, #a5d6a7);
+  margin-right: 0.5rem;
 }
 
 /* ERROR */
 .toast--error {
   background: var(--error-bg, #f44336);
   border-left: 4px solid var(--error-border, #c62828);
+  color: #fff;
 }
 
-.toast--error .toast-icon {
+.toast--error svg {
   color: var(--error-icon, #ffcdd2);
+  margin-right: 0.5rem;
 }
 
 /* WARNING */
 .toast--warning {
   background: var(--warning-bg, #ff9800);
   border-left: 4px solid var(--warning-border, #e65100);
+  color: #fff;
 }
 
-.toast--warning .toast-icon {
+.toast--warning svg {
   color: var(--warning-icon, #ffe0b2);
+  margin-right: 0.5rem;
 }
 
 /* INFO */
 .toast--info {
   background: var(--info-bg, #2196f3);
   border-left: 4px solid var(--info-border, #1565c0);
+  color: #fff;
 }
 
-.toast--info .toast-icon {
+.toast--info svg {
   color: var(--info-icon, #bbdefb);
+  margin-right: 0.5rem;
 }
 /* ===============  ================ */
-
-/* .notification-container {
-  position: fixed;
-} */
 
 .toast {
   position: fixed;
@@ -75,12 +91,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  max-width: 310px;
-  width: 280px;
+  max-width: 370px;
+  width: 350px;
   font-family: "Segoe UI", sans-serif;
-  color: white;
-  height: 70px;
+  height: fit-content;
+  /* bottom: calc(2 * 80px); */
 }
 
 .toast-text {
@@ -96,20 +111,6 @@
     font-size: 15px;
     opacity: 0.9;
   }
-}
-
-.toast-close {
-  cursor: pointer;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  right: 0;
-  width: 50px;
-  height: 100%;
-  color: white;
-  font-size: 1.4rem;
 }
 
 /* =============== POSITIONS ================ */

@@ -1,2 +1,3 @@
 export { default as Toast } from "./Toast";
-export { Toaster, toast } from "./ToastContext";
+export { Toaster } from "./ToastContext";
+export { toast } from "./toast-functions";

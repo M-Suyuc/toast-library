@@ -1,9 +1,9 @@
 import { ShowToast } from "./ToastContext";
 
-import type { ToastFunctions, ToastWithVariant } from "./types/toast.types";
+import type { ToastFunctions } from "./types/toast.types";
 
 export const toast: ToastFunctions = {
-  default(data: ToastWithVariant) {
+  default(data) {
     ShowToast({ ...data, variant: "DEFAULT" });
     return data;
   },

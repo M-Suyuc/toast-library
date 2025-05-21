@@ -1,29 +1,22 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Toast, { TypeToast } from "./Toast";
 import { AnimatePresence } from "motion/react";
 
-interface Props {
-  title: string;
-  description: string;
-  options?: {
-    type?: TypeToast;
-    duration?: number;
-  };
-}
+import Toast from "./Toast";
+import type { ToastWithOptions, ToastWithVariant } from "./types/toast.types";
 
-let globalToast: any;
+let globalToast: (data: ToastWithVariant) => void;
 
 export const Toaster = () => {
-  const [toasts, setToasts] = useState<Array<Props & { id: string }>>([]);
+  const [toasts, setToasts] = useState<ToastWithOptions[]>([]);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const showToast = (data: Props) => {
+  const openToast = (data: ToastWithVariant) => {
     const id = Math.random().toString(36).substring(2, 9);
 
     const newToast = {
@@ -34,13 +27,14 @@ export const Toaster = () => {
     setToasts((prev) => [...prev, newToast]);
   };
 
-  function removeItem(arr: Array<Props & { id: string }> = toasts, item: any) {
+  function removeItem(arr: ToastWithVariant[] = toasts, item: any) {
     return arr.filter((toast) => toast.id !== item.id);
   }
 
-  let duration = Math.min(
-    ...toasts.map((toast) => toast.options?.duration || 1200)
-  );
+  let duration =
+    toasts.length > 0
+      ? Math.min(...toasts.map((toast) => toast.options?.duration || 2000))
+      : 0;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -54,33 +48,31 @@ export const Toaster = () => {
     };
   }, [toasts]);
 
-  globalToast = showToast;
+  globalToast = openToast;
 
   return (
-    <div>
-      <AnimatePresence>
-        {isMounted &&
-          toasts.length > 0 &&
-          toasts.map((toast, id) => (
-            <Toast
-              key={toast?.id}
-              title={toast?.title}
-              description={toast?.description}
-              type={toast?.options?.type}
-              id={id}
-            />
-          ))}
-      </AnimatePresence>
-    </div>
+    <AnimatePresence>
+      {isMounted &&
+        toasts.length > 0 &&
+        toasts.map((toast, id) => (
+          <Toast
+            key={toast.id}
+            title={toast.title}
+            description={toast?.description}
+            id={id}
+            variant={toast?.variant ?? "DEFAULT"}
+          />
+        ))}
+    </AnimatePresence>
   );
 };
 
-export const toast = (data: Props) => {
+export const ShowToast = (data: ToastWithVariant) => {
   if (globalToast) {
     globalToast(data);
   } else {
     console.error(
-      "<Toaster /> component is not mounted. You must import <Toaster /> in your  root layout "
+      "<Toaster /> component is not mounted. You must import <Toaster /> in your  root layout"
     );
   }
 };

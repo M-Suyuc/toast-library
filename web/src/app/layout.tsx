@@ -1,6 +1,7 @@
-import { Toaster } from "ms-ui-toast";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+
+import { Toaster } from "ms-ui-toast";
 
 import "./globals.css";
 
@@ -27,7 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <Toaster />
+        <Toaster position="bottom-left" />
         {children}
       </body>
     </html>

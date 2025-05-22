@@ -1,14 +1,24 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence } from "motion/react";
 
 import Toast from "./Toast";
-import type { ToastWithOptions, ToastWithVariant } from "./types/toast.types";
+
+import type {
+  ToastWithOptions,
+  ToastWithVariant,
+  TypePosition,
+} from "./types/toast.types";
+
+import "./index.css";
 
 let globalToast: (data: ToastWithVariant) => void;
 
-export const Toaster = () => {
+interface Props {
+  position?: TypePosition;
+}
+
+export const Toaster = ({ position = "bottom-right" }: Props) => {
   const [toasts, setToasts] = useState<ToastWithOptions[]>([]);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
@@ -33,7 +43,7 @@ export const Toaster = () => {
 
   let duration =
     toasts.length > 0
-      ? Math.min(...toasts.map((toast) => toast.options?.duration || 2000))
+      ? Math.min(...toasts.map((toast) => toast.options?.duration || 3000))
       : 0;
 
   useEffect(() => {
@@ -50,20 +60,23 @@ export const Toaster = () => {
 
   globalToast = openToast;
 
+  const toastClass = `toast_container ${position}`;
+
   return (
-    <AnimatePresence>
-      {isMounted &&
-        toasts.length > 0 &&
-        toasts.map((toast, id) => (
+    isMounted &&
+    toasts.length > 0 && (
+      <section className={toastClass}>
+        {toasts.map((toast) => (
           <Toast
             key={toast.id}
             title={toast.title}
             description={toast?.description}
-            id={id}
-            variant={toast?.variant ?? "DEFAULT"}
+            variant={toast?.variant}
+            // position={toast.position}
           />
         ))}
-    </AnimatePresence>
+      </section>
+    )
   );
 };
 

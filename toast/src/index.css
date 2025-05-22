@@ -83,9 +83,15 @@
 }
 /* ===============  ================ */
 
-.toast {
+.toast_container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
-  z-index: 9999999;
+  z-index: 999;
+  gap: 10px;
+}
+
+.toast {
   padding: 1rem;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -95,7 +101,6 @@
   width: 350px;
   font-family: "Segoe UI", sans-serif;
   height: fit-content;
-  /* bottom: calc(2 * 80px); */
 }
 
 .toast-text {
@@ -120,6 +125,9 @@
 }
 
 .top-center {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .top-right {
@@ -133,6 +141,9 @@
 }
 
 .bottom-center {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .bottom-right {

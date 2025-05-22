@@ -1,29 +1,16 @@
 "use client";
 
 import { toast } from "ms-ui-toast";
-import Toast from "../../../toast/src/Toast";
 
 export default function Home() {
   return (
     <div className="bg-slate-900 w-full h-screen flex flex-col [&>button]:bg-white [&>button]:cursor-pointer [&>button]:w-48 [&>button]:p-4 justify-center items-center gap-5">
-      <Toast
-        description={"Hi over there Hi over there"}
-        position={"top-right"}
-        variant="DEFAULT"
-      />
-
-      <Toast
-        title={"hello"}
-        description={"Hi over there Hi over there"}
-        position={"top-left"}
-        variant="SUCCESS"
-      />
-
       <button
         onClick={() =>
           toast.default({
             title: "Well done",
-            description: "Thanks for your support",
+            description:
+              "Thanks for your support Thanks for your support Thanks for your support  Thanks for your support  Thanks for your support ",
           })
         }
       >

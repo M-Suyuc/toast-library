@@ -9,17 +9,19 @@ export type TypePosition =
   | "bottom-left";
 
 export type ToastProps = {
-  id?: any;
   title?: string;
   description?: string;
-  position?: TypePosition;
 };
 
-export interface ToastWithVariant extends ToastProps {
-  variant?: TypeToast;
+export type ToastWithId = {
+  id?: string;
+};
+
+export interface ToastWithVariant extends ToastProps, ToastWithId {
+  variant: TypeToast;
 }
 
-export interface ToastWithOptions extends ToastProps, ToastWithVariant {
+export interface ToastWithOptions extends ToastProps {
   options?: {
     duration?: number;
     icon?: React.ReactNode;
@@ -27,9 +29,9 @@ export interface ToastWithOptions extends ToastProps, ToastWithVariant {
 }
 
 export interface ToastFunctions {
-  default: (data: ToastWithVariant) => ToastWithVariant;
-  success: (data: ToastWithVariant) => ToastWithVariant;
-  error: (data: ToastWithVariant) => ToastWithVariant;
-  warning: (data: ToastWithVariant) => ToastWithVariant;
-  info: (data: ToastWithVariant) => ToastWithVariant;
+  default: (data: ToastWithOptions) => ToastWithOptions;
+  success: (data: ToastWithOptions) => ToastWithOptions;
+  error: (data: ToastWithOptions) => ToastWithOptions;
+  warning: (data: ToastWithOptions) => ToastWithOptions;
+  info: (data: ToastWithOptions) => ToastWithOptions;
 }

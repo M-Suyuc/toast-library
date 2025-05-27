@@ -1,15 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import Toast from "./Toast";
-
 import type {
   ToastWithOptions,
   ToastWithVariant,
   TypePosition,
 } from "./types/toast.types";
-
 import "./index.css";
 
 let globalToast: (data: ToastWithVariant) => void;
@@ -39,7 +36,13 @@ export const Toaster = ({ position = "bottom-right" }: PositonToaster) => {
       ...data,
     };
 
-    setToasts((prev) => [...prev, newToast]);
+    setToasts((prevToasts) => {
+      const isOnTopPosition = position.startsWith("top-");
+
+      return isOnTopPosition
+        ? [newToast, ...prevToasts]
+        : [...prevToasts, newToast];
+    });
   };
 
   useEffect(() => {
@@ -65,8 +68,6 @@ export const Toaster = ({ position = "bottom-right" }: PositonToaster) => {
 
   globalToast = openToast;
   const toastClass = `toast_container ${position}`;
-
-  console.log("🚀 ~ toasts.map ~ toasts:", toasts);
 
   return (
     isMounted &&

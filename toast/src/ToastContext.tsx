@@ -14,53 +14,59 @@ import "./index.css";
 
 let globalToast: (data: ToastWithVariant) => void;
 
-interface Props {
+interface PositonToaster {
   position?: TypePosition;
 }
 
-export const Toaster = ({ position = "bottom-right" }: Props) => {
-  const [toasts, setToasts] = useState<ToastWithOptions[]>([]);
+export const Toaster = ({ position = "bottom-right" }: PositonToaster) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
+  const [toasts, setToasts] = useState<
+    Array<ToastWithVariant & ToastWithOptions>
+  >([]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const openToast = (data: ToastWithVariant) => {
+  const openToast = (data: ToastWithVariant & ToastWithOptions) => {
     const id = Math.random().toString(36).substring(2, 9);
+    const now = Date.now();
 
-    const newToast = {
-      ...data,
+    const newToast: ToastWithVariant & ToastWithOptions = {
       id,
+      duration: data.options?.duration ?? 2500,
+      createAt: now,
+      ...data,
     };
 
     setToasts((prev) => [...prev, newToast]);
   };
 
-  function removeItem(arr: ToastWithVariant[] = toasts, item: any) {
-    return arr.filter((toast) => toast.id !== item.id);
-  }
-
-  let duration =
-    toasts.length > 0
-      ? Math.min(...toasts.map((toast) => toast.options?.duration || 3000))
-      : 0;
-
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (toasts.length) {
-        setToasts((toasts) => removeItem(toasts, toasts[0]));
-      }
-    }, duration);
+    const timeouts: number[] = [];
+
+    toasts.map((toast) => {
+      if (toast.duration === Infinity) return;
+
+      const elapsed = Date.now() - toast.createAt!;
+      const remaining = Math.max(0, toast.duration! - elapsed);
+
+      const timeout = setTimeout(() => {
+        setToasts((prev) => prev.filter((t) => t.id !== toast.id));
+      }, remaining);
+
+      timeouts.push(timeout);
+    });
 
     return () => {
-      clearInterval(interval);
+      timeouts.forEach((timeout) => clearTimeout(timeout));
     };
   }, [toasts]);
 
   globalToast = openToast;
-
   const toastClass = `toast_container ${position}`;
+
+  console.log("🚀 ~ toasts.map ~ toasts:", toasts);
 
   return (
     isMounted &&
@@ -72,7 +78,6 @@ export const Toaster = ({ position = "bottom-right" }: Props) => {
             title={toast.title}
             description={toast?.description}
             variant={toast?.variant}
-            // position={toast.position}
           />
         ))}
       </section>
@@ -85,7 +90,7 @@ export const ShowToast = (data: ToastWithVariant) => {
     globalToast(data);
   } else {
     console.error(
-      "<Toaster /> component is not mounted. You must import <Toaster /> in your  root layout"
+      "<Toaster /> component is not mounted. You must import <Toaster /> in your root layout"
     );
   }
 };

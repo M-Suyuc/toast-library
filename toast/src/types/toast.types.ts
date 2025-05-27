@@ -13,12 +13,11 @@ export type ToastProps = {
   description?: string;
 };
 
-export type ToastWithId = {
+export interface ToastWithVariant extends ToastProps {
   id?: string;
-};
-
-export interface ToastWithVariant extends ToastProps, ToastWithId {
   variant: TypeToast;
+  createAt?: number;
+  duration?: number;
 }
 
 export interface ToastWithOptions extends ToastProps {

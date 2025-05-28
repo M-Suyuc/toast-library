@@ -8,6 +8,7 @@ import type {
   TypePosition,
 } from "./types/toast.types";
 import "./index.css";
+import { generateId } from "./utils";
 
 let globalToast: (data: ToastWithVariant) => void;
 
@@ -17,19 +18,17 @@ interface PositonToaster {
 
 export const Toaster = ({ position = "bottom-right" }: PositonToaster) => {
   const [isMounted, setIsMounted] = useState<boolean>(false);
-  const [toasts, setToasts] = useState<
-    Array<ToastWithVariant & ToastWithOptions>
-  >([]);
+  const [toasts, setToasts] = useState<Array<ToastWithVariant>>([]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   const openToast = (data: ToastWithVariant & ToastWithOptions) => {
-    const id = Math.random().toString(36).substring(2, 9);
+    const id = generateId();
     const now = Date.now();
 
-    const newToast: ToastWithVariant & ToastWithOptions = {
+    const newToast: ToastWithVariant = {
       id,
       duration: data.options?.duration ?? 2500,
       createAt: now,

@@ -8,19 +8,20 @@ export type TypePosition =
   | "bottom-center"
   | "bottom-left";
 
-export type ToastProps = {
+export interface ToastProps {
+  id?: string;
   title?: string;
   description?: string;
-};
-
-export interface ToastWithVariant extends ToastProps {
-  id?: string;
-  variant: TypeToast;
   createAt?: number;
   duration?: number;
 }
 
-export interface ToastWithOptions extends ToastProps {
+export interface ToastWithVariant extends ToastProps {
+  variant: TypeToast;
+}
+
+export interface ToastWithOptions
+  extends Pick<ToastProps, "title" | "description"> {
   options?: {
     duration?: number;
     icon?: React.ReactNode;

@@ -2,22 +2,34 @@
   --default-bg: #fff;
   --default-border: #333;
   --default-icon: gray;
-
   --success-bg: #4caf50;
   --success-border: #2e7d32;
   --success-icon: #a5d6a7;
-
   --error-bg: #f44336;
   --error-border: #c62828;
   --error-icon: #ffcdd2;
-
   --warning-bg: #ff9800;
   --warning-border: #e65100;
   --warning-icon: #ffe0b2;
-
   --info-bg: #2196f3;
   --info-border: #1565c0;
   --info-icon: #bbdefb;
+}
+
+.toast svg {
+  margin-right: 0.5rem;
+}
+.toast--success svg {
+  color: var(--success-icon, #a5d6a7);
+}
+.toast--error svg {
+  color: var(--error-icon, #ffcdd2);
+}
+.toast--warning svg {
+  color: var(--warning-icon, #ffe0b2);
+}
+.toast--info svg {
+  color: var(--info-icon, #bbdefb);
 }
 
 .toast--default {
@@ -32,20 +44,10 @@
   color: #fff;
 }
 
-.toast--success svg {
-  color: var(--success-icon, #a5d6a7);
-  margin-right: 0.5rem;
-}
-
 .toast--error {
   background: var(--error-bg, #f44336);
   border-left: 4px solid var(--error-border, #c62828);
   color: #fff;
-}
-
-.toast--error svg {
-  color: var(--error-icon, #ffcdd2);
-  margin-right: 0.5rem;
 }
 
 .toast--warning {
@@ -54,20 +56,10 @@
   color: #fff;
 }
 
-.toast--warning svg {
-  color: var(--warning-icon, #ffe0b2);
-  margin-right: 0.5rem;
-}
-
 .toast--info {
   background: var(--info-bg, #2196f3);
   border-left: 4px solid var(--info-border, #1565c0);
   color: #fff;
-}
-
-.toast--info svg {
-  color: var(--info-icon, #bbdefb);
-  margin-right: 0.5rem;
 }
 
 .toast_container {

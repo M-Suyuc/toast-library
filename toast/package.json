@@ -26,8 +26,6 @@
     "lint": "tsc"
   },
   "keywords": [
-    "test",
-    "toast",
     "notification",
     "toast"
   ],
@@ -44,8 +42,5 @@
     "react-dom": "19.1.0",
     "tsup": "^8.4.0",
     "typescript": "^5.8.3"
-  },
-  "dependencies": {
-    "motion": "^12.11.0"
   }
 }

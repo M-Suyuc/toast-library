@@ -27,7 +27,7 @@ npm install ms-ui-toast
 ```js
 // 📃 root.tsx
 
-import { Toaster } from "@pheralb/toast";
+import { Toaster } from "ms-ui-toast";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
@@ -64,7 +64,7 @@ export default function Toast() {
 
 ## 💡 Inspiration
 
-m-toast was inspired by react-hot-toast and sonner
+m-toast was inspired by react-hot-toast and @pheralb/toast
 
 ## 🎛️ Customization
 

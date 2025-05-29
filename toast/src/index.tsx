@@ -13,3 +13,5 @@ export type {
 
 // "dev": "tsup --watch",
 // "build": "tsc && tsup",
+
+// "include": ["src/**/*.ts", "src/index.tsx"],

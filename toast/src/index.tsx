@@ -10,8 +10,3 @@ export type {
   TypePosition,
   TypeToast,
 } from "./types/toast.types";
-
-// "dev": "tsup --watch",
-// "build": "tsc && tsup",
-
-// "include": ["src/**/*.ts", "src/index.tsx"],

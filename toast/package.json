@@ -6,6 +6,12 @@
   "types": "./dist/index.d.ts",
   "type": "module",
   "private": false,
+  "keywords": [
+    "notification",
+    "toast"
+  ],
+  "author": "m-suyuc",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/M-suyuc"
@@ -22,17 +28,11 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup src/index.ts --format esm --watch --dts",
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup --watch",
+    "build": "tsc && tsup",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "tsc"
   },
-  "keywords": [
-    "notification",
-    "toast"
-  ],
-  "author": "m-suyuc",
-  "license": "MIT",
   "peerDependencies": {
     "react": ">=18.0.0",
     "react-dom": ">=18.0.0"

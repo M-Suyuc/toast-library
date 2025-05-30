@@ -29,7 +29,7 @@ export const Toaster = ({ position = "bottom-right" }: PositonToaster) => {
 
     const newToast: ToastWithVariant = {
       id,
-      duration: data.options?.duration ?? 2500,
+      duration: data.options?.duration ?? 3000,
       createAt: now,
       ...data,
     };

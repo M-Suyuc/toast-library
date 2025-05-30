@@ -1,12 +1,10 @@
 # 🥪 m-toast
 
-
 > [!WARNING]
 > 🚧 Project State: In Development.
 _(Not ready for production! Expect bugs and missing features.)_
 
 A lightweight, customizable toast notification library for modern web applications.
-
 
 ## 🚀 Features
 
@@ -15,6 +13,7 @@ A lightweight, customizable toast notification library for modern web applicatio
   <!-- - 🎨 Fully customizable styles -->
   <!-- - 📦 Zero dependencies -->
   <!-- - 📱 Responsive and accessible -->
+
 ## 💡 Inspiration
 
 m-toast was inspired by react-hot-toast and @pheralb/toast
@@ -90,6 +89,7 @@ Easily customize the delay and behavior of your toasts via options.
 See the [full documentation](./docs) for advanced usage and API details. -->
 
 ## 📚 Stack
+
 - [**Website**](https://github.com/M-Suyuc/toast-library/tree/main/web): Next.js 15.
 - [**Library**](https://github.com/M-Suyuc/toast-library/tree/main/toast): React 19 with tsup.
 

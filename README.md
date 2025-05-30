@@ -1,10 +1,12 @@
 # 🥪 m-toast
 
+
+> [!WARNING]
+> 🚧 Project State: In Development.
+_(Not ready for production! Expect bugs and missing features.)_
+
 A lightweight, customizable toast notification library for modern web applications.
 
-### 🚧 **Project State: In Development**
-
-_(Not ready for production! Expect bugs and missing features.)_
 
 ## 🚀 Features
 
@@ -13,6 +15,9 @@ _(Not ready for production! Expect bugs and missing features.)_
   <!-- - 🎨 Fully customizable styles -->
   <!-- - 📦 Zero dependencies -->
   <!-- - 📱 Responsive and accessible -->
+## 💡 Inspiration
+
+m-toast was inspired by react-hot-toast and @pheralb/toast
 
 ## 📦 Installation library
 
@@ -38,7 +43,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
 
 ```
 
-2. Usage
+2.Usage
 
 ```js
 // 📃 index.tsx
@@ -62,18 +67,31 @@ export default function Toast() {
 }
 ```
 
-## 💡 Inspiration
-
-m-toast was inspired by react-hot-toast and @pheralb/toast
-
 ## 🎛️ Customization
 
-Easily customize the appearance and behavior of your toasts via options or CSS.
+Easily customize the delay and behavior of your toasts via options.
 
+```js
+     <button
+        onClick={() =>
+          toast.default({
+            title: "Well done",
+            description: "Thanks for your support",
+            options: { duration: 5000 },
+          })
+        }
+      >
+        DEFAULT
+      </button>
+```
 <!--
 ## 📚 Documentation
 
 See the [full documentation](./docs) for advanced usage and API details. -->
+
+## 📚 Stack
+- [**Website**](https://github.com/M-Suyuc/toast-library/tree/main/web): Next.js 15.
+- [**Library**](https://github.com/M-Suyuc/toast-library/tree/main/toast): React 19 with tsup.
 
 ## 🤝 Contributing
 

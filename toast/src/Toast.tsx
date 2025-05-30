@@ -2,7 +2,6 @@
 
 import { ToastWithVariant } from "./types/toast.types";
 import { Error, Info, Success, Warning } from "./icons";
-import "./index.css";
 
 const Toast: React.FC<ToastWithVariant> = ({
   title,

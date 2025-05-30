@@ -7,7 +7,6 @@ import type {
   ToastWithVariant,
   TypePosition,
 } from "./types/toast.types";
-import "./index.css";
 import { generateId } from "./utils";
 
 let globalToast: (data: ToastWithVariant) => void;

@@ -11,6 +11,7 @@ export default defineConfig({
   sourcemap: true,
   injectStyle: true, // Inject CSS as style tags to document head
   tsconfig: "tsconfig.json",
+  onSuccess: "cp src/index.css dist/index.css",
   banner: {
     js: '"use client";',
   },

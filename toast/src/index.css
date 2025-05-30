@@ -1,7 +1,6 @@
 :root {
   --default-bg: #fff;
   --default-border: #333;
-  --default-icon: gray;
   --success-bg: #4caf50;
   --success-border: #2e7d32;
   --success-icon: #a5d6a7;
@@ -33,8 +32,8 @@
 }
 
 .toast--default {
-  background: var(--default--bg, #fff);
-  border-left: 4px solid var(--default--border, #999);
+  background: var(--default-bg, #fff);
+  border-left: 4px solid var(--default-border, #999);
   color: #000;
 }
 
@@ -84,7 +83,6 @@
     system-ui,
     -apple-system,
     BlinkMacSystemFont,
-    "Segoe UI",
     Roboto;
   height: auto;
 }
@@ -97,13 +95,17 @@
 }
 .toast-text-title {
   font-weight: 600;
-  font-size: 0.875rem;
-  line-height: 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
 }
 .toast-text-description {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  line-height: 1.4;
+  font-size: 0.8rem;
   opacity: 0.9;
+  margin: 0;
+  padding: 0;
 }
 
 .top-left {
